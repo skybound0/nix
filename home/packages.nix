@@ -1,0 +1,28 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    # desktop apps
+    vesktop
+    beeper
+    vscode-fhs
+    freecad
+    bambu-studio
+    parsec-bin
+    github-cli
+
+    # tidal-hifi's chromium sandbox breaks the UI on launch
+    (symlinkJoin {
+      name = "tidal-hifi-wrapped";
+      paths = [ tidal-hifi ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/tidal-hifi --add-flags "--no-sandbox"
+      '';
+    })
+
+    # utilities
+    appimage-run
+    usbutils
+  ];
+}
