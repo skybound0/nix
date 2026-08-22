@@ -7,6 +7,7 @@
     configurationLimit = 3;
   };
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "nfs" ];
 
   system.nixos.label = "26.11";
 }

@@ -11,6 +11,12 @@
     autoEnable = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    enableFishIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;

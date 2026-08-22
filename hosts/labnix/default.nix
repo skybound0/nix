@@ -29,6 +29,12 @@
 
   documentation.nixos.enable = false;
 
+  fileSystems."/mnt/labsys" = {
+    device = "100.111.112.89:/mnt/Primary/skybound";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" ];
+  };
+
   # Set at install time. Do not bump without reading the release notes.
   system.stateVersion = "26.05";
 }
