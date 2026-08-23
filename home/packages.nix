@@ -10,6 +10,7 @@
     bambu-studio
     parsec-bin
     github-cli
+    inkscape
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
