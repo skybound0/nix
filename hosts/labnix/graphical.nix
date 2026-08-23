@@ -6,8 +6,8 @@
 
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://assets.science.nasa.gov/content/dam/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png";
-    sha256 = "sha256-6J+2dk+j8Xbgq+6jtV2LBVGV3KP8FXN1PetGEst4NKk=";
+    url = "https://thegoose.cloud/apps/files_sharing/publicpreview/KxE95nD6qKaEs2R?file=/&fileId=646&x=2256&y=1504&a=true&etag=a8774b83fbdae6cd3e1e6df1c8663408";
+    sha256 = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
   };
 
   # patched copyous from pr#545762
