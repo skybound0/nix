@@ -63,6 +63,9 @@ in
           ];
         };
         
+        "org/gnome/desktop/datetime" = { automatic-timezone = true; };
+	"org/gnome/system/location" = { enabled = true; };
+
         "org/gnome/shell/extensions/copyous" = {
           open-clipboard-dialog-shortcut=["<Super>v"];
           toggle-incognito-mode-shortcut=["<Control><Super>v"];

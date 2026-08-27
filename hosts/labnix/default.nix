@@ -1,4 +1,7 @@
-{ ... }:
+{ 
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -10,7 +13,8 @@
     ../../modules
   ];
 
-  time.timeZone = "America/Chicago";
+  # Allow timezone to be automatically set by desktop
+  time.timeZone = lib.mkForce null; 
   # For matching Windows RTC
   time.hardwareClockInLocalTime = true;
 
