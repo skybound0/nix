@@ -12,6 +12,8 @@
     github-cli
     openrocket
     inkscape
+    zoom-us
+    obsidian
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
