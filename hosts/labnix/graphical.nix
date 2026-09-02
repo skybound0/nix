@@ -56,7 +56,8 @@ in
           enabled-extensions = [
             copyous.extensionUuid
             pkgs.gnomeExtensions.gsconnect.extensionUuid
-          ];
+            pkgs.gnomeExtensions.unblank.extensionUuid
+	  ];
           favorite-apps = [
             "zen-twilight.desktop"
             "org.gnome.Console.desktop"
@@ -128,6 +129,7 @@ in
     # gnome shell extensions
     copyous
     gnomeExtensions.gsconnect
+    gnomeExtensions.unblank
 
     # gnome core apps
     gnome-console
