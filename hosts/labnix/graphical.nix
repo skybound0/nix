@@ -6,8 +6,8 @@
 
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://thegoose.cloud/s/KxE95nD6qKaEs2R";
-    sha256 = "sha256-8qU7PsWDUa6N1OrDe0ipJoUzp0+ri6Zcwc4beHGWk6s=";
+    url = "https://thegoose.cloud/apps/files_sharing/publicpreview/KxE95nD6qKaEs2R?file=/&fileId=646&x=2256&y=1504&a=true&etag=a8774b83fbdae6cd3e1e6df1c8663408";
+    sha256 = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
   };
 
   # patched copyous from pr#545762
@@ -56,19 +56,23 @@ in
             copyous.extensionUuid
             pkgs.gnomeExtensions.gsconnect.extensionUuid
             pkgs.gnomeExtensions.unblank.extensionUuid
-	  ];
+          ];
           favorite-apps = [
             "zen-twilight.desktop"
             "org.gnome.Console.desktop"
           ];
         };
-        
-        "org/gnome/desktop/datetime" = { automatic-timezone = true; };
-	"org/gnome/system/location" = { enabled = true; };
+
+        "org/gnome/desktop/datetime" = {
+          automatic-timezone = true;
+        };
+        "org/gnome/system/location" = {
+          enabled = true;
+        };
 
         "org/gnome/shell/extensions/copyous" = {
-          open-clipboard-dialog-shortcut=["<Super>v"];
-          toggle-incognito-mode-shortcut=["<Control><Super>v"];
+          open-clipboard-dialog-shortcut = [ "<Super>v" ];
+          toggle-incognito-mode-shortcut = [ "<Control><Super>v" ];
         };
 
         "org/gnome/desktop/interface" = {
@@ -88,9 +92,9 @@ in
           night-light-schedule-from = 20.0;
           night-light-schedule-to = 6.0;
         };
-        
+
         "org/gnome/desktop/interface".show-battery-percentage = true;
-	"org/gnome/desktop/calendar".show-weekdate = true;
+        "org/gnome/desktop/calendar".show-weekdate = true;
 
         "org/gnome/desktop/wm/keybindings" = {
           close = [
@@ -100,11 +104,14 @@ in
         };
 
         "org/gnome/shell/keybindings" = {
-	  toggle-message-tray = [ "<Super>z" ];
-	  show-screenshot-ui = [ "Print" "<Super><Shift>s" ];
-	};
+          toggle-message-tray = [ "<Super>z" ];
+          show-screenshot-ui = [
+            "Print"
+            "<Super><Shift>s"
+          ];
+        };
 
-	"org/gnome/settings-daemon/plugins/media-keys" = {
+        "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           ];
@@ -116,7 +123,7 @@ in
           binding = "<Super>t";
         };
 
-	"org/gnome/settings-daemon/plugins/media-keys" = {
+        "org/gnome/settings-daemon/plugins/media-keys" = {
           www = [ "<Super>w" ];
           home = [ "<Super>e" ];
         };
