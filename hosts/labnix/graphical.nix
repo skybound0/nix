@@ -138,7 +138,7 @@ in
     gnomeExtensions.unblank
 
     # gnome core apps
-    gnome-console
+    # gnome-console
     nautilus
     gnome-calculator
     gnome-calendar

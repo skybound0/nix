@@ -33,7 +33,12 @@
     viAlias = true;
     vimAlias = true;
 
-    extraPackages = with pkgs; [ ripgrep fd nixd nixfmt-rfc-style ];
+    extraPackages = with pkgs; [
+      ripgrep
+      fd
+      nixd
+      nixfmt-rfc-style
+    ];
     extraLuaConfig = ''
       vim.opt.number = true
       vim.opt.relativenumber = true
@@ -50,7 +55,7 @@
           require("which-key").setup({})
         '';
       }
-  
+
       plenary-nvim
       telescope-fzf-native-nvim
       {
@@ -66,7 +71,7 @@
           vim.keymap.set("n", "<leader>fh", t.help_tags,  { desc = "Help" })
         '';
       }
-  
+
       {
         plugin = oil-nvim;
         type = "lua";
@@ -75,7 +80,7 @@
           vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Parent dir" })
         '';
       }
-  
+
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -85,20 +90,20 @@
           })
         '';
       }
-  
+
       nvim-web-devicons
       {
         plugin = lualine-nvim;
         type = "lua";
         config = ''require("lualine").setup({ options = { theme = "auto" } })'';
       }
-  
+
       {
         plugin = gitsigns-nvim;
         type = "lua";
         config = ''require("gitsigns").setup({})'';
       }
-  
+
       {
         plugin = nvim-autopairs;
         type = "lua";
@@ -118,7 +123,7 @@
         '';
       }
       vim-sleuth
-  
+
       {
         plugin = indent-blankline-nvim;
         type = "lua";
@@ -129,7 +134,7 @@
         type = "lua";
         config = ''require("todo-comments").setup({})'';
       }
-  
+
       {
         plugin = trouble-nvim;
         type = "lua";
@@ -138,19 +143,19 @@
           vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
         '';
       }
-  
+
       {
         plugin = undotree;
         type = "lua";
         config = ''vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })'';
       }
-  
+
       {
         plugin = blink-cmp;
         type = "lua";
         config = ''require("blink.cmp").setup({ keymap = { preset = "default" } })'';
       }
-  
+
       {
         plugin = nvim-lspconfig;
         type = "lua";
@@ -161,7 +166,7 @@
         type = "lua";
         config = ''require("fidget").setup({})'';
       }
-  
+
       {
         plugin = conform-nvim;
         type = "lua";
@@ -175,7 +180,7 @@
     ];
   };
   home.sessionVariables.EDITOR = "nvim";
-  
+
   programs.git = {
     enable = true;
     settings = {
@@ -186,17 +191,29 @@
       core.editor = "nvim";
       alias = {
         st = "status";
-	co = "checkout";
-	lg = "log --oneline --graph --decorate";
+        co = "checkout";
+        lg = "log --oneline --graph --decorate";
       };
     };
   };
 
-  # hide nvim.desktop 
+  # hide nvim.desktop
   xdg.desktopEntries."nvim" = {
     name = "Neovim";
     noDisplay = true;
   };
+
+  programs.ghostty = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      font-family = "JetBrainsMono Nerd Font";
+      font-size = 11;
+    };
+  };
+
+  home.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+  fonts.fontconfig.enable = true;
 
   programs.fish = {
     enable = true;
@@ -205,8 +222,14 @@
       set -gx NIX_REMOTE daemon
     '';
     plugins = [
-      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+      {
+        name = "fzf-fish";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+      {
+        name = "autopair";
+        src = pkgs.fishPlugins.autopair.src;
+      }
     ];
   };
 
