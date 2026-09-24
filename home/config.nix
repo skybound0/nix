@@ -230,6 +230,7 @@ in
     settings = {
       font-family = "JetBrainsMono Nerd Font";
       font-size = 11;
+      fullscreen = true;
     };
   };
 
