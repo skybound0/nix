@@ -46,7 +46,6 @@ in
     autoEnable = true;
   };
 
-  # declarative gnome settings
   programs.dconf.profiles.user.databases = [
     {
       settings = {
@@ -59,7 +58,7 @@ in
           ];
           favorite-apps = [
             "zen-twilight.desktop"
-            "org.gnome.Console.desktop"
+            "com.mitchellh.ghostty.desktop"
           ];
         };
 
@@ -106,7 +105,7 @@ in
         "org/gnome/shell/keybindings" = {
           toggle-message-tray = [ "<Super>z" ];
           show-screenshot-ui = [
-            "Print"
+            "Print screen"
             "<Super><Shift>s"
           ];
         };
@@ -119,7 +118,7 @@ in
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
           name = "Open terminal";
-          command = "gapplication launch org.gnome.Console";
+          command = "ghostty";
           binding = "<Super>t";
         };
 
