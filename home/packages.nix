@@ -2,6 +2,10 @@
 
 {
   home.packages = with pkgs; [
+    # gnome extensions
+    gnomeExtensions.gsconnect
+    gnomeExtensions.unblank
+
     # desktop apps
     vesktop
     beeper
