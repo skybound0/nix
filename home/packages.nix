@@ -10,10 +10,11 @@
     bambu-studio
     parsec-bin
     github-cli
-    openrocket
     inkscape
     zoom-us
-    obsidian
+    kicad
+    gimp-with-plugins
+    steam
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
