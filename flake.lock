@@ -56,6 +56,18 @@
         "type": "github"
       }
     },
+    "mimick": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-3BA56bNAbuNKDcC/GYq6sFe4WRkTL3sgJzcMwzWi1Fs=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/skybound0/nixpkgs/d750adc8418971742153245012afa7df1888e37f/pkgs/by-name/mi/mimick/package.nix"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/skybound0/nixpkgs/d750adc8418971742153245012afa7df1888e37f/pkgs/by-name/mi/mimick/package.nix"
+      }
+    },
     "nixos-hardware": {
       "inputs": {
         "nixpkgs": [
@@ -144,6 +156,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "mimick": "mimick",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "openterface-qt": "openterface-qt",

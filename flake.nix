@@ -21,29 +21,50 @@
       };
     };
     openterface-qt.url = "github:TechxArtisanStudio/Openterface_QT";
-  };
-
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, catppuccin, zen-browser, openterface-qt, ... }: {
-    nixosConfigurations.labnix = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/labnix
-        nixos-hardware.nixosModules.framework-13-7040-amd
-        home-manager.nixosModules.home-manager
-        catppuccin.nixosModules.catppuccin
-        openterface-qt.nixosModules.openterface
-	{
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.skybound = {
-            imports = [
-              ./home
-              catppuccin.homeModules.catppuccin
-              zen-browser.homeModules.twilight
-            ];
-          };
-        }
-      ];
+    mimick = {
+      url = "file+https://raw.githubusercontent.com/skybound0/nixpkgs/d750adc8418971742153245012afa7df1888e37f/pkgs/by-name/mi/mimick/package.nix";
+      flake = false;
     };
   };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      catppuccin,
+      zen-browser,
+      openterface-qt,
+      mimick,
+      ...
+    }:
+    {
+      overlays.default = final: prev: {
+        mimick = final.callPackage mimick { };
+      };
+
+      nixosConfigurations.labnix = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          { nixpkgs.overlays = [ self.overlays.default ]; }
+          ./hosts/labnix
+          nixos-hardware.nixosModules.framework-13-7040-amd
+          home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
+          openterface-qt.nixosModules.openterface
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.skybound = {
+              imports = [
+                ./home
+                catppuccin.homeModules.catppuccin
+                zen-browser.homeModules.twilight
+              ];
+            };
+          }
+        ];
+      };
+    };
 }

@@ -19,6 +19,7 @@
     kicad
     gimp-with-plugins
     steam
+    mimick
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
