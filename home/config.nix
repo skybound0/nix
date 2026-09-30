@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   wallpaper = pkgs.fetchurl {
@@ -230,7 +230,7 @@ in
     settings = {
       font-family = "JetBrainsMono Nerd Font";
       font-size = 11;
-      maximize = true; 
+      maximize = true;
     };
   };
 
@@ -287,6 +287,13 @@ in
         "zen-twilight.desktop"
         "com.mitchellh.ghostty.desktop"
       ];
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-windows = [ "<Alt>Tab" ];
+      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-applications = lib.hm.gvariant.mkEmptyArray lib.hm.gvariant.type.string;
+      switch-applications-backward = lib.hm.gvariant.mkEmptyArray lib.hm.gvariant.type.string;
     };
 
     "org/gnome/shell/extensions/copyous" = {
