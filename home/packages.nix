@@ -20,6 +20,7 @@
     gimp-with-plugins
     steam
     mimick
+    mission-planner
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
