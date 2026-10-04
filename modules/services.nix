@@ -23,11 +23,16 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
+  hardware.flipperzero.enable = true;
+
   # openterfaceQT
   services.openterface = {
     enable = true;
   };
-  users.users.skybound.extraGroups = [ "dialout" "video" ];
+  users.users.skybound.extraGroups = [
+    "dialout"
+    "video"
+  ];
   services.udev.packages = [
     (pkgs.writeTextDir "lib/udev/rules.d/70-openterface.rules" ''
       SUBSYSTEM=="usb", ATTRS{idVendor}=="534d", ATTRS{idProduct}=="2109", TAG+="uaccess"
