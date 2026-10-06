@@ -23,7 +23,7 @@
     mission-planner
     libreoffice
     hunspell
-    hunspellDicts.us_EN
+    hunspellDicts.en_US
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
