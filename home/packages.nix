@@ -21,6 +21,9 @@
     steam
     mimick
     mission-planner
+    libreoffice
+    hunspell
+    hunspellDicts.us_EN
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
