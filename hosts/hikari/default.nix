@@ -16,7 +16,7 @@
   documentation.nixos.enable = false;
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
-.
+
   # fileSystems."/mnt/labsys" = {
   #   device = "100.111.112.89:/mnt/Primary/skybound";
   #   fsType = "nfs";
