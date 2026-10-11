@@ -10,6 +10,7 @@
     ./boot.nix
     ./graphical.nix
     ./networking.nix
+    ./services.nix
     ../../modules
   ];
 
