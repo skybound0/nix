@@ -1,5 +1,5 @@
 {
-  description = "labnix config";
+  description = "skybound's nix configs";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -61,6 +61,25 @@
                 ./home
                 catppuccin.homeModules.catppuccin
                 zen-browser.homeModules.twilight
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.hikari = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          { nixpkgs.overlays = [ self.overlays.default ]; }
+          ./hosts/hikari
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.skybound = {
+              imports = [
+                ./home/server.nix
+                catppuccin.homeModules.catppuccin
               ];
             };
           }
