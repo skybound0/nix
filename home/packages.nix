@@ -19,11 +19,14 @@
     kicad
     gimp-with-plugins
     steam
-    mimick
     mission-planner
     libreoffice
     hunspell
     hunspellDicts.en_US
+
+    # cloud
+    nextcloud-talk-desktop
+    mimick
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
     (symlinkJoin {
