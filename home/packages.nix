@@ -23,6 +23,7 @@
     libreoffice
     hunspell
     hunspellDicts.en_US
+    tigervnc
 
     # cloud
     nextcloud-talk-desktop
