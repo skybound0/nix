@@ -24,20 +24,21 @@
     hunspell
     hunspellDicts.en_US
     tigervnc
+    cider-2
 
     # cloud
     nextcloud-talk-desktop
     mimick
 
     # tidal-hifi's chromium sandbox breaks the UI on launch
-    (symlinkJoin {
-      name = "tidal-hifi-wrapped";
-      paths = [ tidal-hifi ];
-      buildInputs = [ makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/tidal-hifi --add-flags "--no-sandbox"
-      '';
-    })
+    # (symlinkJoin {
+    #   name = "tidal-hifi-wrapped";
+    #   paths = [ tidal-hifi ];
+    #   buildInputs = [ makeWrapper ];
+    #   postBuild = ''
+    #     wrapProgram $out/bin/tidal-hifi --add-flags "--no-sandbox"
+    #   '';
+    # })
 
     # utilities
     appimage-run
