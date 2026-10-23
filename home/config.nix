@@ -65,7 +65,7 @@ in
     Unit.Description = "Nextcloud Autosync";
     Service = {
       Type = "oneshot";
-      EnvironmentFile = "/run/secrets/nextcloud-autosync";
+      EnvironmentFile = "/run/agenix/nextcloud-autosync";
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/cloud";
       ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h --non-interactive %h/cloud https://thegoose.cloud";
       TimeoutStopSec = "180";

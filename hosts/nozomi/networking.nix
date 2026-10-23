@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  networking.hostName = "labnix";
+  networking.hostName = "nozomi";
   networking.networkmanager.enable = true;
   networking.nftables.enable = true;
 
