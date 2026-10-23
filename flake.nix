@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -33,6 +37,7 @@
       nixpkgs,
       nixos-hardware,
       home-manager,
+      agenix,
       catppuccin,
       zen-browser,
       openterface-qt,
@@ -44,15 +49,23 @@
         mimick = final.callPackage mimick { };
       };
 
-      nixosConfigurations.labnix = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nozomi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           { nixpkgs.overlays = [ self.overlays.default ]; }
-          ./hosts/labnix
+          ./hosts/nozomi
           nixos-hardware.nixosModules.framework-13-7040-amd
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           openterface-qt.nixosModules.openterface
+          agenix.nixosModules.default
+          {
+            age.secrets.nextcloud-autosync = {
+              file = ./secrets/nextcloud.age;
+              owner = "skybound";
+            };
+            environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
+          }
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
