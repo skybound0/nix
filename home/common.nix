@@ -28,9 +28,9 @@
       ripgrep
       fd
       nixd
-      nixfmt-rfc-style
+      nixfmt
     ];
-    extraLuaConfig = ''
+    initLua = ''
       vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.signcolumn = "yes"
