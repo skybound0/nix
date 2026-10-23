@@ -15,7 +15,7 @@
     });
   };
 
-  # gsconnect. extension dconf in hosts/../graphical.nix, ports in hosts/../networking.nix
+  # gsconnect. extension dconf in home/config.nix
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;

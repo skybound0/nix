@@ -8,8 +8,11 @@
     shell = pkgs.fish;
   };
 
-  # Registers fish in /etc/shells; per-user fish config lives in home/config.nix.
   programs.fish.enable = true;
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  documentation.nixos.enable = false;
 
   nixpkgs.config.allowUnfree = true;
 

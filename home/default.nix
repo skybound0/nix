@@ -5,6 +5,6 @@
     ./common.nix
     ./config.nix
     ./packages.nix
-    ../modules/nautilus-taildrop.nix
+    ./nautilus-taildrop.nix
   ];
 }

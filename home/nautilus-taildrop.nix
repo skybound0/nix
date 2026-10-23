@@ -1,4 +1,4 @@
-# modules/nautilus-taildrop.nix
+# home/nautilus-taildrop.nix
 { pkgs, lib, ... }:
 
 let
@@ -22,7 +22,7 @@ let
     pkgs.gobject-introspection
   ];
 
-  # "Send via Taildrop" — Nautilus Scripts entry (GTK4/libadwaita device picker)
+  # send-via-taildrop nautilus script
   send-via-taildrop = pkgs.stdenvNoCC.mkDerivation {
     pname = "nautilus-send-via-taildrop";
     version = "1.0.0";
@@ -41,9 +41,7 @@ let
     '';
   };
 
-  # Auto-receive daemon — written directly in Nix (not patched from upstream's
-  # script) so the timeout-wrapped `tailscale file get --wait` logic is
-  # guaranteed present, with no risk of a silent substituteInPlace mismatch.
+  # taildrop-auto-receive daemon
   taildrop-auto-receive = pkgs.writeShellApplication {
     name = "taildrop-auto-receive";
     runtimeInputs = [ pkgs.tailscale pkgs.libnotify pkgs.coreutils ];
@@ -88,8 +86,6 @@ let
 in
 {
   home.packages = [ send-via-taildrop taildrop-auto-receive ];
-
-  # Right-click a file in Nautilus -> Scripts -> "Send via Taildrop"
   home.file.".local/share/nautilus/scripts/Send via Taildrop" = {
     source = "${send-via-taildrop}/bin/send-via-taildrop";
     executable = true;

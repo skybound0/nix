@@ -14,12 +14,10 @@
     ../../modules
   ];
 
-  # Allow timezone to be automatically set by desktop
   time.timeZone = lib.mkForce null; 
-  # For matching Windows RTC
+  # for matching windows rtc
   time.hardwareClockInLocalTime = true;
 
-  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -32,14 +30,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  documentation.nixos.enable = false;
-
   fileSystems."/mnt/labsys" = {
     device = "100.111.112.89:/mnt/Primary/skybound";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" ];
   };
 
-  # Set at install time. Do not bump without reading the release notes.
+  # DO NOT CHANGE
   system.stateVersion = "26.05";
 }

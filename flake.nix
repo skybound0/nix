@@ -44,6 +44,15 @@
       mimick,
       ...
     }:
+    let
+      # shared by every host; per-host modules are added below
+      commonModules = [
+        { nixpkgs.overlays = [ self.overlays.default ]; }
+        home-manager.nixosModules.home-manager
+        agenix.nixosModules.default
+        { environment.systemPackages = [ agenix.packages.x86_64-linux.default ]; }
+      ];
+    in
     {
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
@@ -51,21 +60,11 @@
 
       nixosConfigurations.nozomi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          { nixpkgs.overlays = [ self.overlays.default ]; }
+        modules = commonModules ++ [
           ./hosts/nozomi
           nixos-hardware.nixosModules.framework-13-7040-amd
-          home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           openterface-qt.nixosModules.openterface
-          agenix.nixosModules.default
-          {
-            age.secrets.nextcloud-autosync = {
-              file = ./secrets/nextcloud.age;
-              owner = "skybound";
-            };
-            environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
-          }
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -82,10 +81,8 @@
 
       nixosConfigurations.hikari = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          { nixpkgs.overlays = [ self.overlays.default ]; }
+        modules = commonModules ++ [
           ./hosts/hikari
-          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

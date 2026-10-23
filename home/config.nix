@@ -60,28 +60,6 @@ in
     setAsDefaultBrowser = true;
   };
 
-  # nextcloud autosync
-  systemd.user.services.nextcloud-autosync = {
-    Unit.Description = "Nextcloud Autosync";
-    Service = {
-      Type = "oneshot";
-      EnvironmentFile = "/run/agenix/nextcloud-autosync";
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/cloud";
-      ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h --non-interactive %h/cloud https://thegoose.cloud";
-      TimeoutStopSec = "180";
-      KillSignal = "SIGINT";
-    };
-  };
-  systemd.user.timers.nextcloud-autosync = {
-    Unit.Description = "Run Nextcloud Autosync half-hourly";
-    Timer = {
-      OnBootSec = "5min";
-      OnUnitActiveSec = "30min";
-    };
-    Install.WantedBy = [ "timers.target" ];
-  };
-  systemd.user.startServices = "sd-switch";
-
   # bridge for the bitwarden browser extension
   home.file.".mozilla/native-messaging-hosts/com.8bit.bitwarden.json".text = builtins.toJSON {
     name = "com.8bit.bitwarden";

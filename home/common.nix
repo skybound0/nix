@@ -1,10 +1,24 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./nextcloud-autosync.nix
+  ];
+
   home.username = "skybound";
   home.homeDirectory = "/home/skybound";
   home.stateVersion = "26.11";
   programs.home-manager.enable = true;
+  systemd.user.startServices = "sd-switch";
+
+  home.packages = with pkgs; [
+    github-cli
+    btop
+    tmux
+    jq
+    ripgrep
+    fd
+  ];
 
   catppuccin = {
     enable = true;

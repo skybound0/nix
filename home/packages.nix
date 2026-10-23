@@ -13,7 +13,6 @@
     freecad
     bambu-studio
     parsec-bin
-    github-cli
     inkscape
     zoom-us
     kicad
