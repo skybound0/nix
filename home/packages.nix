@@ -24,6 +24,7 @@
     hunspellDicts.en_US
     tigervnc
     cider-2
+    obs-studio
 
     # cloud
     nextcloud-talk-desktop
