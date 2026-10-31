@@ -149,5 +149,8 @@
     showtime
     snapshot
     baobab
+
+    # polkit only reads actions from the system profile (i think)
+    bitwarden-desktop
   ];
 }

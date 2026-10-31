@@ -13,6 +13,7 @@
     freecad
     autodesk-fusion
     bambu-studio
+    bitwarden-desktop
     parsec-bin
     inkscape
     zoom-us
