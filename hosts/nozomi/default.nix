@@ -1,4 +1,4 @@
-{ 
+{
   lib,
   ...
 }:
@@ -15,7 +15,7 @@
     ../../modules
   ];
 
-  time.timeZone = lib.mkForce null; 
+  time.timeZone = lib.mkForce null;
   # for matching windows rtc
   time.hardwareClockInLocalTime = true;
 
@@ -31,11 +31,11 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  fileSystems."/mnt/labsys" = {
-    device = "100.111.112.89:/mnt/Primary/skybound";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" ];
-  };
+  # fileSystems."/mnt/labsys" = {
+  #   device = "100.111.112.89:/mnt/Primary/skybound";
+  #   fsType = "nfs";
+  #   options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" ];
+  # };
 
   # DO NOT CHANGE
   system.stateVersion = "26.05";
