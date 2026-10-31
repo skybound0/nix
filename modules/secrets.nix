@@ -8,7 +8,7 @@
         identity = "/home/skybound/.ssh/id_ed25519";
         pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6DhHnTh9Ps7hxGNifJGYaS1CWcBoxFsyapt2q9a4au";
       }
-      # ../secrets/yubikey-identity.pub
+      ../secrets/identities/o1.pub
     ];
     # skybound@hikari
     extraEncryptionPubkeys = [
