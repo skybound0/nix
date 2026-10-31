@@ -11,6 +11,7 @@
     beeper
     vscode-fhs
     freecad
+    autodesk-fusion
     bambu-studio
     parsec-bin
     inkscape

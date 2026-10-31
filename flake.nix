@@ -67,6 +67,7 @@
     {
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
+        autodesk-fusion = final.callPackage ./pkgs/autodesk-fusion/package.nix { };
       };
 
       agenix-rekey = agenix-rekey.configure {
