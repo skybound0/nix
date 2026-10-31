@@ -9,6 +9,8 @@
     ../../modules
   ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSoO7MATbrHstBnW3VkmF7xoFykLf1NzaWNfVYCsoFY";
+
   time.timeZone = "America/Los_Angeles";
 
   nix.settings.trusted-users = [

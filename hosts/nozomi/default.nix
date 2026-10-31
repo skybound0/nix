@@ -15,6 +15,8 @@
     ../../modules
   ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOp398vRbxzloxBOMzbSaTv/eAAEe3NmTaBuqX0dddr";
+
   time.timeZone = lib.mkForce null;
   # for matching windows rtc
   time.hardwareClockInLocalTime = true;

@@ -23,6 +23,9 @@
 
   hardware.flipperzero.enable = true;
 
+  # smartcard daemon for age-plugin-yubikey
+  services.pcscd.enable = true;
+
   # openterfaceQT
   services.openterface = {
     enable = true;

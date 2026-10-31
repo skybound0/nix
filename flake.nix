@@ -15,6 +15,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +46,7 @@
       nixos-hardware,
       home-manager,
       agenix,
+      agenix-rekey,
       lanzaboote,
       catppuccin,
       zen-browser,
@@ -55,12 +60,18 @@
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
-        { environment.systemPackages = [ agenix.packages.x86_64-linux.default ]; }
+        agenix-rekey.nixosModules.default
+        { environment.systemPackages = [ agenix-rekey.packages.x86_64-linux.default ]; }
       ];
     in
     {
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
+      };
+
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
       };
 
       nixosConfigurations.nozomi = nixpkgs.lib.nixosSystem {

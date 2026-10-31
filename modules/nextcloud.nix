@@ -3,7 +3,7 @@
 {
   # secrets for home/nextcloud-autosync.nix
   age.secrets.nextcloud-autosync = {
-    file = ../secrets/nextcloud.age;
+    rekeyFile = ../secrets/nextcloud.age;
     owner = "skybound";
   };
 
