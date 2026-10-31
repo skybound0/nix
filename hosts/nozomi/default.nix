@@ -8,6 +8,7 @@
     ./hardware.nix
     ./audio.nix
     ./boot.nix
+    ./encryption.nix
     ./graphical.nix
     ./networking.nix
     ./services.nix
