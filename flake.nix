@@ -15,6 +15,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -38,6 +42,7 @@
       nixos-hardware,
       home-manager,
       agenix,
+      lanzaboote,
       catppuccin,
       zen-browser,
       openterface-qt,
@@ -63,6 +68,7 @@
         modules = commonModules ++ [
           ./hosts/nozomi
           nixos-hardware.nixosModules.framework-13-7040-amd
+          lanzaboote.nixosModules.lanzaboote
           catppuccin.nixosModules.catppuccin
           openterface-qt.nixosModules.openterface
           {
