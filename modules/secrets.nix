@@ -9,6 +9,7 @@
         pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6DhHnTh9Ps7hxGNifJGYaS1CWcBoxFsyapt2q9a4au";
       }
       ../secrets/identities/o1.pub
+      ../secrets/identities/o2.pub
     ];
     # skybound@hikari
     extraEncryptionPubkeys = [
