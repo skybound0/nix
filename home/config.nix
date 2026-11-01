@@ -38,6 +38,11 @@ in
     noDisplay = true;
   };
 
+  xdg.autostart = {
+    enable = true;
+    entries = [ "${pkgs.beeper}/share/applications/beepertexts.desktop" ];
+  };
+
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
