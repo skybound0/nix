@@ -13,9 +13,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "nfs" ];
 
-  # needed for tpm2 luks unlock
-  boot.initrd.systemd.enable = true;
-
   environment.systemPackages = [ pkgs.sbctl ];
 
   system.nixos.label = "26.11";
