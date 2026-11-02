@@ -220,5 +220,11 @@
     ];
   };
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    includes = [ "/run/agenix/ssh-config" ];
+  };
+
   programs.starship.enable = true;
 }

@@ -7,6 +7,7 @@
     ./packages.nix
     ./secrets.nix
     ./services.nix
+    ./ssh.nix
     ./system.nix
   ];
 }
