@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -226,6 +226,15 @@
     enableDefaultConfig = false;
     includes = [ "/run/agenix/ssh-config" ];
   };
+
+  # vscode-fhs store fix for ssh
+  home.file.".ssh/config".force = true;
+  home.activation.sshConfigCopy = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    if [ -L "$HOME/.ssh/config" ]; then
+      run cp --remove-destination "$(readlink -f "$HOME/.ssh/config")" "$HOME/.ssh/config"
+      run chmod 600 "$HOME/.ssh/config"
+    fi
+  '';
 
   programs.starship.enable = true;
 }
