@@ -11,6 +11,7 @@
     ./encryption.nix
     ./graphical.nix
     ./networking.nix
+    ./nix-remote.nix
     ./services.nix
     ../../modules
   ];
