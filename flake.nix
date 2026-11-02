@@ -85,13 +85,20 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.skybound = {
-              imports = [
-                ./home
-                catppuccin.homeModules.catppuccin
-                zen-browser.homeModules.twilight
-              ];
-            };
+            home-manager.users.skybound =
+              { pkgs, ... }:
+              {
+                imports = [
+                  ./home
+                  catppuccin.homeModules.catppuccin
+                  zen-browser.homeModules.twilight
+                ];
+                my.desktop.wallpaper = pkgs.fetchurl {
+                  name = "nozomi-wallpaper.png";
+                  url = "https://thegoose.cloud/apps/files_sharing/publicpreview/KxE95nD6qKaEs2R?file=/&fileId=646&x=2256&y=1504&a=true&etag=a8774b83fbdae6cd3e1e6df1c8663408";
+                  hash = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
+                };
+              };
           }
         ];
       };
@@ -110,14 +117,21 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.skybound = {
-              imports = [
-                ./home
-                ./home/desktop.nix
-                catppuccin.homeModules.catppuccin
-                zen-browser.homeModules.twilight
-              ];
-            };
+            home-manager.users.skybound =
+              { pkgs, ... }:
+              {
+                imports = [
+                  ./home
+                  ./home/desktop.nix
+                  catppuccin.homeModules.catppuccin
+                  zen-browser.homeModules.twilight
+                ];
+                my.desktop.wallpaper = pkgs.fetchurl {
+                  name = "mizuho-wallpaper-placeholder.png";
+                  url = "https://thegoose.cloud/apps/files_sharing/publicpreview/ALzEd34YEMtXEpZ?file=/&fileId=808&x=2560&y=1440&a=true&etag=4dc76c354284bd329623b1701c23b9e1";
+                  hash = "sha256-unOBq9bl2yinwnzSM2JHZVYsEXutkg+FsQNjmZb/9dI=";
+                };
+              };
           }
         ];
       };
