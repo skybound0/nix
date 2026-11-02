@@ -55,7 +55,6 @@
       ...
     }:
     let
-      # shared by every host; per-host modules are added below
       commonModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
@@ -89,6 +88,32 @@
             home-manager.users.skybound = {
               imports = [
                 ./home
+                catppuccin.homeModules.catppuccin
+                zen-browser.homeModules.twilight
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.mizuho = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = commonModules ++ [
+          ./hosts/mizuho
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+          nixos-hardware.nixosModules.common-gpu-amd
+          lanzaboote.nixosModules.lanzaboote
+          catppuccin.nixosModules.catppuccin
+          openterface-qt.nixosModules.openterface
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.skybound = {
+              imports = [
+                ./home
+                ./home/desktop.nix
                 catppuccin.homeModules.catppuccin
                 zen-browser.homeModules.twilight
               ];
