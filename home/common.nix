@@ -18,6 +18,7 @@
     jq
     ripgrep
     fd
+    nixfmt
   ];
 
   catppuccin = {
