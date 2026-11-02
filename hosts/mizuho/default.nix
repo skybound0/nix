@@ -14,7 +14,7 @@
     ../../modules
   ];
 
-  # age.rekey.hostPubkey = "";
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfedV5mWR4shBFHteYBfMybNWvzIGfp6bqJv5ky4eaz";
 
   time.timeZone = lib.mkForce null;
 
