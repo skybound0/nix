@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
     # gnome extensions
     gnomeExtensions.gsconnect
-    gnomeExtensions.unblank
 
     # desktop apps
     vesktop
@@ -45,5 +44,6 @@
     # utilities
     appimage-run
     usbutils
-  ];
+  ]
+  ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank;
 }

@@ -26,6 +26,12 @@ in
     description = "desktop wallpaper";
   };
 
+  options.my.desktop.unblank = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "keep the screen on while locked (unblank extension)";
+  };
+
   config = {
     programs.obsidian = {
       enable = true;
@@ -76,8 +82,8 @@ in
         enabled-extensions = [
           copyous.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
-          pkgs.gnomeExtensions.unblank.extensionUuid
-        ];
+        ]
+        ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank.extensionUuid;
         favorite-apps = [
           "zen-twilight.desktop"
           "com.mitchellh.ghostty.desktop"
