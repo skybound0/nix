@@ -61,6 +61,14 @@ in
         font-family = "JetBrainsMono Nerd Font";
         font-size = 11;
         maximize = true;
+
+        keybind = [
+          "ctrl+alt+w=close_surface"
+          "ctrl+alt+h=goto_split:left"
+          "ctrl+alt+j=goto_split:down"
+          "ctrl+alt+k=goto_split:up"
+          "ctrl+alt+l=goto_split:right"
+        ]
       };
     };
 
