@@ -68,7 +68,7 @@ in
           "ctrl+alt+j=goto_split:down"
           "ctrl+alt+k=goto_split:up"
           "ctrl+alt+l=goto_split:right"
-        ]
+        ];
       };
     };
 
