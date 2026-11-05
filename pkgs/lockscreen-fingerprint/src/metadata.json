@@ -1,0 +1,7 @@
+{
+  "uuid": "lockscreen-fingerprint@skybound",
+  "name": "Lock Screen Fingerprint",
+  "description": "Listen for the fingerprint reader as soon as the screen locks, without lifting the clock first.",
+  "shell-version": ["50"],
+  "session-modes": ["user", "unlock-dialog"]
+}

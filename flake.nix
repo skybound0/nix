@@ -67,6 +67,18 @@
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
         autodesk-fusion = final.callPackage ./pkgs/autodesk-fusion/package.nix { };
+        lockscreen-fingerprint = final.callPackage ./pkgs/lockscreen-fingerprint/package.nix { };
+        # nixpkgs only has unblank v40 for shell v<=49, need to replace after it is updated
+        gnomeExtensions = prev.gnomeExtensions // {
+          unblank = prev.gnomeExtensions.unblank.overrideAttrs (_: {
+            version = "41";
+            src = final.fetchzip {
+              url = "https://extensions.gnome.org/extension-data/unblanksun.wxggmail.com.v41.shell-extension.zip";
+              hash = "sha256-hQeUGEdOHg6aJp8Dph3U/XaV3msyZZSxrJbTpxeDwKo=";
+              stripRoot = false;
+            };
+          });
+        };
       };
 
       agenix-rekey = agenix-rekey.configure {
@@ -98,6 +110,8 @@
                   url = "https://thegoose.cloud/apps/files_sharing/publicpreview/KxE95nD6qKaEs2R?file=/&fileId=646&x=2256&y=1504&a=true&etag=a8774b83fbdae6cd3e1e6df1c8663408";
                   hash = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
                 };
+                my.desktop.unblank = true;
+                my.desktop.lockscreenFingerprint = true;
               };
           }
         ];
