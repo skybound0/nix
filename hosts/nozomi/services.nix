@@ -48,4 +48,7 @@
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="fe0c", TAG+="uaccess"
     '')
   ];
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", ATTRS{idVendor}=="3837", MODE="0666", TAG+="uaccess"
+  '';
 }
