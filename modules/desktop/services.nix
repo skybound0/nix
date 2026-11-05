@@ -20,6 +20,7 @@
   };
 
   hardware.flipperzero.enable = true;
+  hardware.keyboard.qmk.enable = true;
 
   # smartcard daemon for age-plugin-yubikey
   services.pcscd.enable = true;
