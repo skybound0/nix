@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     github-cli
     btop
+    ethtool
     tmux
     jq
     ripgrep
