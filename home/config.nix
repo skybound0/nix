@@ -32,6 +32,12 @@ in
     description = "keep the screen on while locked (unblank extension)";
   };
 
+  options.my.desktop.lockscreenFingerprint = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "start fingerprint auth as soon as the screen locks (lockscreen-fingerprint extension)";
+  };
+
   config = {
     programs.obsidian = {
       enable = true;
@@ -75,7 +81,8 @@ in
     home.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       copyous
-    ];
+    ]
+    ++ lib.optional config.my.desktop.lockscreenFingerprint pkgs.lockscreen-fingerprint;
 
     fonts.fontconfig.enable = true;
 
@@ -91,7 +98,8 @@ in
           copyous.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
         ]
-        ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank.extensionUuid;
+        ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank.extensionUuid
+        ++ lib.optional config.my.desktop.lockscreenFingerprint pkgs.lockscreen-fingerprint.extensionUuid;
         favorite-apps = [
           "zen-twilight.desktop"
           "com.mitchellh.ghostty.desktop"

@@ -67,6 +67,7 @@
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
         autodesk-fusion = final.callPackage ./pkgs/autodesk-fusion/package.nix { };
+        lockscreen-fingerprint = final.callPackage ./pkgs/lockscreen-fingerprint/package.nix { };
         # nixpkgs only has unblank v40 for shell v<=49, need to replace after it is updated
         gnomeExtensions = prev.gnomeExtensions // {
           unblank = prev.gnomeExtensions.unblank.overrideAttrs (_: {
@@ -110,6 +111,7 @@
                   hash = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
                 };
                 my.desktop.unblank = true;
+                my.desktop.lockscreenFingerprint = true;
               };
           }
         ];
