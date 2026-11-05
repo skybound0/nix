@@ -6,7 +6,7 @@
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
-    configurationLimit = 5;
+    configurationLimit = lib.mkDefault 5;
     settings.editor = false;
   };
   boot.loader.efi.canTouchEfiVariables = true;

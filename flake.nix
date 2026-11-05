@@ -67,6 +67,31 @@
         agenix-rekey.nixosModules.default
         { environment.systemPackages = [ agenix-rekey.packages.x86_64-linux.default ]; }
       ];
+
+      mkDesktop =
+        name: hardwareModules:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules =
+            commonModules
+            ++ hardwareModules
+            ++ [
+              ./hosts/${name}
+              lanzaboote.nixosModules.lanzaboote
+              catppuccin.nixosModules.catppuccin
+              openterface-qt.nixosModules.openterface
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.skybound.imports = [
+                  ./home
+                  ./hosts/${name}/home.nix
+                  catppuccin.homeModules.catppuccin
+                  zen-browser.homeModules.twilight
+                ];
+              }
+            ];
+        };
     in
     {
       overlays.default = final: prev: {
@@ -92,70 +117,16 @@
         nixosConfigurations = self.nixosConfigurations;
       };
 
-      nixosConfigurations.nozomi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = commonModules ++ [
-          ./hosts/nozomi
-          nixos-hardware.nixosModules.framework-13-7040-amd
-          lanzaboote.nixosModules.lanzaboote
-          catppuccin.nixosModules.catppuccin
-          openterface-qt.nixosModules.openterface
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.skybound =
-              { pkgs, ... }:
-              {
-                imports = [
-                  ./home
-                  catppuccin.homeModules.catppuccin
-                  zen-browser.homeModules.twilight
-                ];
-                my.desktop.wallpaper = pkgs.fetchurl {
-                  name = "nozomi-wallpaper.png";
-                  url = "https://thegoose.cloud/apps/files_sharing/publicpreview/KxE95nD6qKaEs2R?file=/&fileId=646&x=2256&y=1504&a=true&etag=a8774b83fbdae6cd3e1e6df1c8663408";
-                  hash = "sha256-aoKHI9n02Gki1ISEyrWW1C/hRoqhmgr2BK6ugng7XjI=";
-                };
-                my.desktop.unblank = true;
-                my.desktop.lockscreenFingerprint = true;
-              };
-          }
-        ];
-      };
+      nixosConfigurations.nozomi = mkDesktop "nozomi" [
+        nixos-hardware.nixosModules.framework-13-7040-amd
+      ];
 
-      nixosConfigurations.mizuho = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = commonModules ++ [
-          ./hosts/mizuho
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-          nixos-hardware.nixosModules.common-gpu-amd
-          lanzaboote.nixosModules.lanzaboote
-          catppuccin.nixosModules.catppuccin
-          openterface-qt.nixosModules.openterface
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.skybound =
-              { pkgs, ... }:
-              {
-                imports = [
-                  ./home
-                  ./home/desktop.nix
-                  catppuccin.homeModules.catppuccin
-                  zen-browser.homeModules.twilight
-                ];
-                my.desktop.wallpaper = pkgs.fetchurl {
-                  name = "mizuho-wallpaper-placeholder.png";
-                  url = "https://thegoose.cloud/apps/files_sharing/publicpreview/ALzEd34YEMtXEpZ?file=/&fileId=808&x=2560&y=1440&a=true&etag=4dc76c354284bd329623b1701c23b9e1";
-                  hash = "sha256-unOBq9bl2yinwnzSM2JHZVYsEXutkg+FsQNjmZb/9dI=";
-                };
-                my.desktop.unblank = false;
-              };
-          }
-        ];
-      };
+      nixosConfigurations.mizuho = mkDesktop "mizuho" [
+        nixos-hardware.nixosModules.common-pc
+        nixos-hardware.nixosModules.common-pc-ssd
+        nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+        nixos-hardware.nixosModules.common-gpu-amd
+      ];
 
       nixosConfigurations.hikari = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -1,38 +1,21 @@
-{
-  lib,
-  ...
-}:
+{ ... }:
 
 {
   imports = [
     ./hardware.nix
-    ./audio.nix
     ./boot.nix
     ./encryption.nix
-    ./graphical.nix
     ./networking.nix
     ./nix-remote.nix
     ./services.nix
     ../../modules
+    ../../modules/desktop
   ];
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOp398vRbxzloxBOMzbSaTv/eAAEe3NmTaBuqX0dddr";
 
-  time.timeZone = lib.mkForce null;
   # for matching windows rtc
   time.hardwareClockInLocalTime = true;
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # fileSystems."/mnt/labsys" = {
   #   device = "100.111.112.89:/mnt/Primary/skybound";
