@@ -228,6 +228,44 @@
         "type": "github"
       }
     },
+    "hylki": {
+      "inputs": {
+        "hylki-src": "hylki-src",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793535500,
+        "narHash": "sha256-QEHL1hPKG6AxJ/x5d/qagwFU1OPzfentnKwXDWA7d4k=",
+        "owner": "clementpoiret",
+        "repo": "hylki-flake",
+        "rev": "d16172a823c6cc125b7825ede83113bc2d7ea2cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "clementpoiret",
+        "repo": "hylki-flake",
+        "type": "github"
+      }
+    },
+    "hylki-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793469766,
+        "narHash": "sha256-RstIFKKQfRR30vZEqyWS4RjY7lnah/CdGd23Yh/Nsro=",
+        "owner": "hyprlab",
+        "repo": "hylki",
+        "rev": "4f60f21515b0ae325c6fe300d097b0412853cbac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprlab",
+        "ref": "v1.46.1",
+        "repo": "hylki",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -399,6 +437,7 @@
         "agenix-rekey": "agenix-rekey",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "hylki": "hylki",
         "lanzaboote": "lanzaboote",
         "mimick": "mimick",
         "nixos-hardware": "nixos-hardware",

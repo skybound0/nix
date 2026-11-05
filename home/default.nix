@@ -6,5 +6,6 @@
     ./config.nix
     ./packages.nix
     ./nautilus-taildrop.nix
+    ./hylki.nix
   ];
 }

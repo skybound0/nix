@@ -33,6 +33,10 @@
       };
     };
     openterface-qt.url = "github:TechxArtisanStudio/Openterface_QT";
+    hylki = {
+      url = "github:clementpoiret/hylki-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mimick = {
       url = "file+https://raw.githubusercontent.com/skybound0/nixpkgs/d750adc8418971742153245012afa7df1888e37f/pkgs/by-name/mi/mimick/package.nix";
       flake = false;
@@ -51,6 +55,7 @@
       catppuccin,
       zen-browser,
       openterface-qt,
+      hylki,
       mimick,
       ...
     }:
@@ -66,6 +71,7 @@
     {
       overlays.default = final: prev: {
         mimick = final.callPackage mimick { };
+        hylki = hylki.packages.${final.stdenv.hostPlatform.system}.default;
         autodesk-fusion = final.callPackage ./pkgs/autodesk-fusion/package.nix { };
         lockscreen-fingerprint = final.callPackage ./pkgs/lockscreen-fingerprint/package.nix { };
         # nixpkgs only has unblank v40 for shell v<=49, need to replace after it is updated

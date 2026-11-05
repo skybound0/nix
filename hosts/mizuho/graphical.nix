@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -25,6 +26,9 @@
     autoEnable = true;
   };
 
+  # nautilus-python extensions for hylki
+  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
+
   # opencl for darktable etc
   hardware.amdgpu.opencl.enable = true;
 
@@ -32,6 +36,7 @@
     # gnome core apps
     gnome-console
     nautilus
+    nautilus-python
     gnome-calculator
     gnome-calendar
     gnome-system-monitor
