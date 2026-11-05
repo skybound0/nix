@@ -17,6 +17,8 @@
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfedV5mWR4shBFHteYBfMybNWvzIGfp6bqJv5ky4eaz";
 
+  my.pinLogin.enable = true;
+
   time.timeZone = lib.mkForce null;
 
   i18n.extraLocaleSettings = {
