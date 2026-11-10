@@ -31,6 +31,7 @@
   services.harmonia.cache = {
     enable = true;
     signKeyPaths = [ config.age.secrets.nix-cache-key.path ];
+    settings.priority = 30;
   };
 
   age.secrets.nix-cache-key = {
