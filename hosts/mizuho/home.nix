@@ -9,4 +9,5 @@
     hash = "sha256-unOBq9bl2yinwnzSM2JHZVYsEXutkg+FsQNjmZb/9dI=";
   };
   my.desktop.unblank = false;
+  my.desktop.multiMonitorBar = true;
 }

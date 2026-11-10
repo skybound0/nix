@@ -8,4 +8,5 @@
   };
   my.desktop.unblank = true;
   my.desktop.lockscreenFingerprint = true;
+  my.desktop.multiMonitorBar = true;
 }

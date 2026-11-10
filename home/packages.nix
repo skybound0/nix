@@ -45,5 +45,6 @@
     appimage-run
     usbutils
   ]
-  ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank;
+  ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank
+  ++ lib.optional config.my.desktop.multiMonitorBar pkgs.gnomeExtensions.multi-monitor-bar;
 }

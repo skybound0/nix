@@ -38,6 +38,12 @@ in
     description = "start fingerprint auth as soon as the screen locks (lockscreen-fingerprint extension)";
   };
 
+  options.my.desktop.multiMonitorBar = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "show the top bar on secondary monitors (multi-monitor-bar extension)";
+  };
+
   config = {
     programs.obsidian = {
       enable = true;
@@ -99,7 +105,8 @@ in
           pkgs.gnomeExtensions.gsconnect.extensionUuid
         ]
         ++ lib.optional config.my.desktop.unblank pkgs.gnomeExtensions.unblank.extensionUuid
-        ++ lib.optional config.my.desktop.lockscreenFingerprint pkgs.lockscreen-fingerprint.extensionUuid;
+        ++ lib.optional config.my.desktop.lockscreenFingerprint pkgs.lockscreen-fingerprint.extensionUuid
+        ++ lib.optional config.my.desktop.multiMonitorBar pkgs.gnomeExtensions.multi-monitor-bar.extensionUuid;
         favorite-apps = [
           "zen-twilight.desktop"
           "com.mitchellh.ghostty.desktop"
