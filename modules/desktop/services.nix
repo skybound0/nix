@@ -14,7 +14,7 @@
     # virtual printer
     cups-pdf = {
       enable = true;
-      instances.PDF.settings.Out = "\${HOME}/PDF";
+      instances.PDF.settings.Out = "\${HOME}/Downloads";
     };
   };
 
