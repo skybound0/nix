@@ -17,12 +17,13 @@
 
 let
   # Lolig4's fork carries the maintained Fusion-on-Wine fixes
-  forkFile =
-    path: hash:
+  forkFileAt =
+    commit: path: hash:
     fetchurl {
-      url = "https://codeberg.org/Lolig4/Autodesk-Fusion-360-on-Linux/raw/commit/7da442d6af5ac2619e5151475d2be54efe6170bc/files/setup/data/${path}";
+      url = "https://codeberg.org/Lolig4/Autodesk-Fusion-360-on-Linux/raw/commit/${commit}/files/setup/data/${path}";
       inherit hash;
     };
+  forkFile = forkFileAt "7da442d6af5ac2619e5151475d2be54efe6170bc";
 
   # stock wine above 11.10 renders a black canvas, so keep this on the version the fork's patches target
   wine = wineWow64Packages.unstableFull.overrideAttrs (old: rec {
@@ -39,6 +40,8 @@ let
       (forkFile "inventor-patches/ole32-revokedragdrop-release-order.patch" "sha256-H1VdpDiXwK9t0DX0i+l/Fp/1p+uIJZac8zszRqT4VW0=")
       (forkFile "inventor-patches/services-session0-scm1053.patch" "sha256-IGhE2NRTaeCxDx7EOlKGKPrLMMYCsJhoED7zeNE43bw=")
       (forkFile "fusion-patches/winex11-owned-tool-windows.patch" "sha256-kGqkQG3Wy6dLWtKfC/oT+tIX44fXaEO31E6u4pMcTlo=")
+      # lets the drawing engine skip its wine fifo path, see hide_wine_exports in the launcher
+      (forkFileAt "4bc2d0ee27ee435670e5f6224249e0e581cb4bd0" "fusion-patches/kernelbase-hide-wine-exports.patch" "sha256-zbsxrWnN2ds8qr6LnCjLkiZ9fFaBZMS76oLzOSzdQkY=")
       (forkFile "fusion-patches/dwrite-glyph-cache-rendering-mode.patch" "sha256-YbmWRbBOOvVu9rmJr3hOPVO1NiytZB2CIEpjgbgBrbo=")
       (forkFile "inventor-patches/ntdll-mapuserphysicalpagesscatter.patch" "sha256-Te5HVSG9y+q1p1XLnJIzRk5h9KxPseen/BYvN4RaEuY=")
       (forkFile "fusion-patches/win32u-vulkan-wait-for-present.patch" "sha256-HUqtv22eFETmVIsbPx6gfKXNiFm6EvVFMBxQRvDGZLo=")

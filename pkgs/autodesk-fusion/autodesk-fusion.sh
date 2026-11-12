@@ -69,6 +69,13 @@ configure_prefix() {
     wine reg add 'HKCU\Software\Wine\X11 Driver' /v Decorated /t REG_SZ /d Y /f
 }
 
+# these modules switch to a linux-host ipc mode when they see wine_get_version, and fusion drawings
+# then waits forever on fifos under Z:\tmp that nothing creates, so hide wine from them
+hide_wine_exports() {
+    wine reg add 'HKCU\Software\Wine\HideWineExports' /v AcIpc_2_x64.dll /t REG_SZ /d '' /f
+    wine reg add 'HKCU\Software\Wine\HideWineExports' /v AcFusionService.crx /t REG_SZ /d '' /f
+}
+
 install_webview2() {
     # the exit code is unreliable, it can report an error after a good install
     wine "$installers/MicrosoftEdgeWebView2RuntimeInstallerX64.exe" /silent /install || true
@@ -124,6 +131,7 @@ step download_installers download_installers
 step init_prefix init_prefix
 step install_runtimes install_runtimes
 step configure_prefix configure_prefix
+step hide_wine_exports hide_wine_exports
 step install_webview2 install_webview2
 step install_fusion install_fusion
 step write_options write_options
