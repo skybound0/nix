@@ -76,6 +76,13 @@ hide_wine_exports() {
     wine reg add 'HKCU\Software\Wine\HideWineExports' /v AcFusionService.crx /t REG_SZ /d '' /f
 }
 
+# fusion is dpi aware but the drawing engine it embeds is not, so under scaling wine maps the engine's
+# input and drawing at a different dpi than its host window and clicks land offset from the cursor.
+# wine matches this key on the bare exe name, so it survives fusion updates moving the build directory
+drawings_dpi_aware() {
+    wine reg add 'HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers' /v accoreconsole.exe /t REG_SZ /d '~ HIGHDPIAWARE' /f
+}
+
 install_webview2() {
     # the exit code is unreliable, it can report an error after a good install
     wine "$installers/MicrosoftEdgeWebView2RuntimeInstallerX64.exe" /silent /install || true
@@ -132,6 +139,7 @@ step init_prefix init_prefix
 step install_runtimes install_runtimes
 step configure_prefix configure_prefix
 step hide_wine_exports hide_wine_exports
+step drawings_dpi_aware drawings_dpi_aware
 step install_webview2 install_webview2
 step install_fusion install_fusion
 step write_options write_options
