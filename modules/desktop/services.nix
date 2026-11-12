@@ -11,6 +11,11 @@
         rm -f $out/share/applications/cups.desktop
       '';
     });
+    # virtual printer
+    cups-pdf = {
+      enable = true;
+      instances.PDF.settings.Out = "\${HOME}/PDF";
+    };
   };
 
   # gsconnect
